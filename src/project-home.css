@@ -1,3 +1,25 @@
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a47 #090909;
+}
+
+html::-webkit-scrollbar {
+  width: 4px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #4a4a47;
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #70706c;
+}
+
 body {
   background: #090909;
 }
@@ -137,6 +159,7 @@ main {
   margin-top: 0;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 22px;
 }
 
 .project-layout .project-card {
@@ -150,6 +173,23 @@ main {
     linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
   background-size: 38px 38px;
+}
+
+.project-layout .project-art.has-image {
+  background: #090909;
+}
+
+.project-layout .project-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .55s cubic-bezier(.2, .7, .2, 1), filter .4s ease;
+}
+
+.project-layout .project-card:hover .project-art img {
+  transform: scale(1.018);
+  filter: contrast(1.04);
 }
 
 .project-layout .art-form {
