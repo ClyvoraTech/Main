@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ArrowDownRight, ArrowUpRight, Menu, X } from 'lucide-react'
+import Lenis from 'lenis'
 import './styles.css'
 
 const navItems = ['About', 'Technology', 'Projects', 'Contact']
@@ -48,6 +49,15 @@ function SectionIntro({ eyebrow, title }: { eyebrow: string; title: ReactNode })
 }
 
 function App() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const lenis = new Lenis({ duration: 1.05, smoothWheel: true, touchMultiplier: 1.35 })
+    let frame = 0
+    const animate = (time: number) => { lenis.raf(time); frame = requestAnimationFrame(animate) }
+    frame = requestAnimationFrame(animate)
+    return () => { cancelAnimationFrame(frame); lenis.destroy() }
+  }, [])
   useEffect(() => {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')), { threshold: 0.15 })
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
