@@ -10,13 +10,8 @@ const navItems = [
   { label: 'Projects', href: '#projects' },
 ]
 
-// Add future projects here when they are ready to share.
+// Add future public projects here when they are ready to share.
 const projects = [
-  {
-    name: 'Clyvora Lens',
-    copy: 'A local-first workspace for inspecting, searching, and converting JSON, CSV, and text files without uploading them.',
-    image: '/lens-preview.png',
-  },
   {
     name: 'Clyvora',
     copy: 'The home for Clyvora and everything I build under its name.',
@@ -101,11 +96,7 @@ function App() {
         <div className="project-grid">
           {projects.map(project => <Reveal className="project-reveal" key={project.name}>
             <article className="project-card">
-              <div className={`project-art ${project.image ? 'has-image' : ''}`}>
-                {project.image
-                  ? <img src={project.image} alt="Clyvora Lens interface showing a JSON tree transformed into a table"/>
-                  : <div className="art-form"/>}
-              </div>
+              <div className="project-art"><div className="art-form"/></div>
               <div className="project-info"><div><h3>{project.name}</h3><p>{project.copy}</p></div></div>
             </article>
           </Reveal>)}
