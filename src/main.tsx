@@ -17,10 +17,6 @@ const projects = [
     copy: 'A local-first workspace for inspecting, searching, and converting JSON, CSV, and text files without uploading them.',
     image: '/lens-preview.png',
   },
-  {
-    name: 'Clyvora',
-    copy: 'The home for Clyvora and everything I build under its name.',
-  },
 ]
 
 function Button({ children, secondary = false, href }: { children: ReactNode; secondary?: boolean; href: string }) {
