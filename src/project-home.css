@@ -60,10 +60,7 @@ main {
 }
 
 .about,
-.technology,
-.projects,
-.philosophy,
-.contact {
+.projects {
   position: relative;
   color: #f5f5f2;
   border-top: 1px solid rgba(255, 255, 255, .08);
@@ -122,14 +119,6 @@ main {
 
 .glass-statement span {
   color: #777772;
-}
-
-.technology {
-  background: #090909;
-}
-
-.focus-row {
-  grid-template-columns: 1.2fr 1fr 30px;
 }
 
 .projects {
@@ -213,30 +202,6 @@ main {
   line-height: 1.55;
 }
 
-.philosophy {
-  background-color: #090909;
-  background-image:
-    radial-gradient(circle at 82% 45%, transparent 0 150px, rgba(255, 255, 255, .11) 151px, transparent 152px),
-    radial-gradient(circle at 82% 45%, transparent 0 260px, rgba(255, 255, 255, .08) 261px, transparent 262px);
-}
-
-.philosophy-line {
-  background: rgba(255, 255, 255, .18);
-}
-
-.contact {
-  background: #0b0b0b;
-}
-
-.contact-noise {
-  background:
-    radial-gradient(ellipse at 70% 50%, rgba(70, 70, 68, .45), transparent 34%),
-    linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
-  background-size: auto, 58px 58px, 58px 58px;
-  transform: none;
-}
-
 footer {
   background: #090909;
   color: #f5f5f2;
@@ -275,10 +240,6 @@ footer > div a:hover {
     height: 110vw;
     right: -70%;
     bottom: -12%;
-  }
-
-  .focus-row {
-    grid-template-columns: 1fr 25px;
   }
 
   .project-layout {

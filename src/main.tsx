@@ -8,20 +8,13 @@ import './project-home.css'
 const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Elsewhere', href: '#elsewhere' },
 ]
 
-const interests = [
-  ['Web projects', 'Useful, considered experiences for the browser.'],
-  ['Small tools', 'Focused software that solves one problem well.'],
-  ['Experiments', 'Ideas explored through code, design, and AI.'],
-  ['Open source', 'Work worth sharing, including the process behind it.'],
-]
-
+// Add future public projects here when they are ready to share.
 const projects = [
   {
-    name: 'Clyvora Main',
-    copy: 'The home for Clyvora and the projects that will live under its name.',
+    name: 'Clyvora',
+    copy: 'The home for Clyvora and everything I build under its name.',
   },
 ]
 
@@ -97,22 +90,6 @@ function App() {
       </div>
     </section>
 
-    <section id="about" className="section about">
-      <div className="section-orbit" aria-hidden="true"><span/></div>
-      <SectionIntro title={<>A name for my<br/><i>side projects.</i></>}/>
-      <Reveal className="about-body">
-        <p>Clyvora is not an agency or a big company. It is a simple umbrella for the things I make—some useful, some experimental, and all built because I wanted to learn or explore something.</p>
-        <div className="glass-statement"><span>“</span><strong>Build interesting things.<br/>Share the good ones.</strong></div>
-      </Reveal>
-    </section>
-
-    <section className="section technology">
-      <SectionIntro title={<>Code, ideas,<br/>and <i>curiosity.</i></>}/>
-      <div className="focus-list">
-        {interests.map(([name, description]) => <Reveal key={name} className="focus-reveal"><article className="focus-row"><h3>{name}</h3><p>{description}</p><ArrowUpRight className="focus-arrow"/></article></Reveal>)}
-      </div>
-    </section>
-
     <section id="projects" className="section projects">
       <SectionIntro title={<>Made, then<br/><i>shared.</i></>}/>
       <div className="project-layout">
@@ -124,18 +101,20 @@ function App() {
             </article>
           </Reveal>)}
         </div>
-        <Reveal className="project-note"><h3>Only real work goes here.</h3><p>The list is short on purpose. New projects will be added when there is something genuine to show—not just a polished name and a placeholder.</p></Reveal>
+        <Reveal className="project-note"><h3>A growing collection.</h3><p>More projects will appear here when they’re ready.</p></Reveal>
       </div>
     </section>
 
-    <section className="philosophy"><div className="philosophy-line"/><Reveal><h2>Small projects,<br/><i>finished carefully.</i></h2></Reveal></section>
-
-    <section id="elsewhere" className="contact">
-      <div className="contact-noise"/>
-      <Reveal><h2>See what I’m<br/><i>building next.</i></h2><p>Code, experiments, and future releases will appear on the Clyvora GitHub.</p><Button href="https://github.com/ClyvoraTech">Visit GitHub <ArrowUpRight size={18}/></Button></Reveal>
+    <section id="about" className="section about">
+      <div className="section-orbit" aria-hidden="true"><span/></div>
+      <SectionIntro title={<>A name for my<br/><i>side projects.</i></>}/>
+      <Reveal className="about-body">
+        <p>Clyvora is the name I use for software projects and experiments I build in my spare time. This is where I collect the ones worth sharing.</p>
+        <div className="glass-statement"><span>“</span><strong>Build interesting things.<br/>Share the good ones.</strong></div>
+      </Reveal>
     </section>
 
-    <footer><a href="#top" className="logo">Clyvora<span>.</span></a><div><a href="#about">About</a><a href="#projects">Projects</a><a href="https://github.com/ClyvoraTech" target="_blank" rel="noreferrer">GitHub</a></div><p>© {new Date().getFullYear()} Clyvora · Built by one person</p></footer>
+    <footer><a href="#top" className="logo">Clyvora<span>.</span></a><div><a href="#projects">Projects</a><a href="#about">About</a><a href="https://github.com/ClyvoraTech" target="_blank" rel="noreferrer">GitHub</a></div><p>© {new Date().getFullYear()} Clyvora · Built independently</p></footer>
   </main>
 }
 
