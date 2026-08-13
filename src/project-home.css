@@ -24,6 +24,36 @@ body {
   background: #090909;
 }
 
+/* Shared Clyvora header: the same centered mark and dimensions on every site. */
+.nav-wrap {
+  top: 20px;
+  width: min(1120px, calc(100% - 40px));
+}
+
+.nav {
+  position: relative;
+  height: 86px;
+  justify-content: center;
+  padding: 0;
+  border-radius: 24px;
+  background: rgba(12, 12, 12, .82);
+}
+
+.nav-brand {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 12px;
+}
+
+.nav-brand img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 main {
   overflow: hidden;
 }
@@ -42,23 +72,24 @@ main {
 }
 
 .orb {
-  border-color: rgba(245, 245, 242, .42);
+  border-color: rgba(238, 234, 225, .1);
   box-shadow: 0 0 70px rgba(255, 255, 255, .018);
+  animation: none;
 }
 
 .orb-a {
-  width: min(60vw, 780px);
-  height: min(60vw, 780px);
-  right: -8vw;
-  top: 9%;
+  width: 760px;
+  height: 760px;
+  right: -230px;
+  top: 92px;
 }
 
 .orb-b {
-  width: min(35vw, 470px);
-  height: min(35vw, 470px);
-  right: 2vw;
-  top: 29%;
-  border-color: rgba(245, 245, 242, .3);
+  width: 460px;
+  height: 460px;
+  right: -76px;
+  top: 241px;
+  border-color: rgba(238, 234, 225, .055);
 }
 
 .orb span,
@@ -71,14 +102,11 @@ main {
   box-shadow: 0 0 18px rgba(245, 245, 242, .55);
 }
 
-.orb-a span {
-  right: 20%;
-  top: 8%;
-}
-
 .orb-b span {
-  left: 3%;
-  top: 48%;
+  left: -4px;
+  top: calc(50% - 4px);
+  width: 7px;
+  height: 7px;
 }
 
 .about,
@@ -246,21 +274,32 @@ footer > div a:hover {
 }
 
 @media (max-width: 700px) {
+  .nav-wrap {
+    top: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .nav {
+    height: 72px;
+    padding: 0;
+    border-radius: 20px;
+  }
+
   .hero-grid {
     background-size: 42px 42px;
     mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, .5));
   }
 
   .orb-a {
-    width: 110vw;
-    height: 110vw;
-    right: -58vw;
+    width: 760px;
+    height: 760px;
+    right: -510px;
   }
 
   .orb-b {
-    width: 70vw;
-    height: 70vw;
-    right: -22vw;
+    width: 460px;
+    height: 460px;
+    right: -330px;
   }
 
   .section-orbit {

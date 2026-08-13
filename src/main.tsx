@@ -1,14 +1,9 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ArrowDownRight, ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
 import Lenis from 'lenis'
 import './styles.css'
 import './project-home.css'
-
-const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-]
 
 // Add future projects here when they are ready to share.
 const projects = [
@@ -36,27 +31,12 @@ function Reveal({ children, className = '' }: { children: ReactNode; className?:
 }
 
 function Navbar() {
-  const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 24)
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    return () => window.removeEventListener('scroll', update)
-  }, [])
-
-  return <header className={`nav-wrap ${scrolled ? 'is-scrolled' : ''}`}>
+  return <header className="nav-wrap">
     <nav className="nav" aria-label="Main navigation">
-      <a href="#top" className="logo" aria-label="Clyvora home">Clyvora<span>.</span></a>
-      <div className="nav-links">{navItems.map(item => <a key={item.label} href={item.href}>{item.label}</a>)}</div>
-      <a href="https://github.com/ClyvoraTech" target="_blank" rel="noreferrer" className="nav-cta">GitHub <ArrowUpRight size={15}/></a>
-      <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open}>{open ? <X/> : <Menu/>}</button>
+      <a href="#top" className="nav-brand" aria-label="Clyvora home">
+        <img src="/favicon.png" alt="" width="32" height="32" decoding="async" />
+      </a>
     </nav>
-    <div className={`mobile-menu ${open ? 'open' : ''}`}>
-      {navItems.map(item => <a onClick={() => setOpen(false)} key={item.label} href={item.href}>{item.label}</a>)}
-      <a onClick={() => setOpen(false)} href="https://github.com/ClyvoraTech" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={16}/></a>
-    </div>
   </header>
 }
 
@@ -87,7 +67,7 @@ function App() {
     <Navbar />
 
     <section className="hero" aria-labelledby="hero-title">
-      <div className="orb orb-a" aria-hidden="true"><span/></div><div className="orb orb-b" aria-hidden="true"><span/></div><div className="hero-grid" aria-hidden="true"/>
+      <div className="orb orb-a" aria-hidden="true"/><div className="orb orb-b" aria-hidden="true"><span/></div><div className="hero-grid" aria-hidden="true"/>
       <div className="hero-content">
         <h1 id="hero-title">Things I build,<br/><i>in one place.</i></h1>
         <p className="hero-copy">Clyvora is my personal home for software, experiments, and ideas I want to put into the world.</p>
