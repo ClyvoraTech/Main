@@ -12,12 +12,14 @@ const projects = [
     copy: 'A local-first workspace for inspecting, searching, and converting JSON, CSV, and text files without uploading them.',
     image: '/lens-preview.png',
     alt: 'Clyvora Lens interface showing a JSON tree transformed into a table',
+    href: 'https://lens.clyvora.tech',
   },
   {
     name: 'Clyvora Convert',
     copy: 'A fast, local-first converter for PNG, JPG, WebP, MP3, and WAV files—without uploads or accounts.',
     image: '/convert-preview.png',
     alt: 'Clyvora Convert interface showing image and audio formats passing through a local conversion engine',
+    href: 'https://convert.clyvora.tech',
   },
 ]
 
@@ -83,14 +85,14 @@ function App() {
       <div className="project-layout">
         <div className="project-grid">
           {projects.map(project => <Reveal className="project-reveal" key={project.name}>
-            <article className="project-card">
+            <a className="project-card" href={project.href} aria-label={`Open ${project.name}`}>
               <div className={`project-art ${project.image ? 'has-image' : ''}`}>
                 {project.image
                   ? <img src={project.image} alt={project.alt}/>
                   : <div className="art-form"/>}
               </div>
-              <div className="project-info"><div><h3>{project.name}</h3><p>{project.copy}</p></div></div>
-            </article>
+              <div className="project-info"><div><h3>{project.name}</h3><p>{project.copy}</p></div><span className="project-link">Open <ArrowUpRight size={15}/></span></div>
+            </a>
           </Reveal>)}
         </div>
       </div>
