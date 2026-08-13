@@ -35,7 +35,7 @@ const projects: Project[] = [
     copy: 'Inspect, search, filter, and convert structured data without sending it anywhere.',
     image: '/lens-preview.png',
     alt: 'Clyvora Lens turning a nested JSON document into a readable table',
-    href: 'https://lens.clyvora.tech',
+    href: 'https://www.lens.clyvora.tech',
     repo: 'https://github.com/ClyvoraTech/Lens',
     features: ['Search JSON keys and values', 'Sort and filter CSV data', 'Convert JSON and CSV locally'],
     formats: 'JSON · CSV · TXT',
@@ -75,6 +75,7 @@ function Navbar() {
       <div className="nav-links">
         <a href="#projects">Projects</a>
         <a href="#principles">Principles</a>
+        <a href="/about/">About</a>
         <ExternalLink href="https://github.com/ClyvoraTech">GitHub <ArrowUpRight size={13} /></ExternalLink>
       </div>
     </nav>
@@ -86,7 +87,14 @@ function ProjectCard({ project }: { project: Project }) {
     <article className="project-card">
       <ExternalLink className="project-art-link" href={project.href}>
         <div className="project-art">
-          <img src={project.image} alt={project.alt} />
+          <img
+            src={project.image}
+            alt={project.alt}
+            width={project.accent === 'lens' ? 1729 : 1672}
+            height={project.accent === 'lens' ? 910 : 941}
+            loading="lazy"
+            decoding="async"
+          />
           <span className="project-format">{project.formats}</span>
         </div>
       </ExternalLink>
@@ -136,7 +144,7 @@ function App() {
 
       <div className="hero-content">
         <h1 id="hero-title">Useful file tools.<br /><i>Your files stay yours.</i></h1>
-        <p className="hero-copy">Clyvora builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads, accounts, or analytics.</p>
+        <p className="hero-copy">Clyvora Technologies builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads, accounts, or analytics.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">Explore the tools <ArrowDownRight size={16} /></a>
           <ExternalLink className="button button-secondary" href="https://github.com/ClyvoraTech">Browse the code <ArrowUpRight size={16} /></ExternalLink>
@@ -189,7 +197,7 @@ function App() {
       <Reveal>
         <h2 id="closing-title">Pick a tool.<br /><i>Keep your files.</i></h2>
         <div className="closing-actions">
-          <ExternalLink className="button button-primary" href="https://lens.clyvora.tech">Open Lens <ArrowUpRight size={16} /></ExternalLink>
+          <ExternalLink className="button button-primary" href="https://www.lens.clyvora.tech">Open Lens <ArrowUpRight size={16} /></ExternalLink>
           <ExternalLink className="button button-secondary" href="https://convert.clyvora.tech">Open Convert <ArrowUpRight size={16} /></ExternalLink>
         </div>
       </Reveal>
@@ -201,6 +209,7 @@ function App() {
       <div>
         <a href="#projects">Projects</a>
         <a href="#principles">Principles</a>
+        <a href="/about/">About</a>
         <ExternalLink href="https://github.com/ClyvoraTech">GitHub</ExternalLink>
       </div>
       <small>© {new Date().getFullYear()} Clyvora</small>

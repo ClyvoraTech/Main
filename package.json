@@ -2,6 +2,19 @@
   "name": "clyvora-technologies",
   "private": true,
   "version": "0.1.0",
+  "description": "The official website for Clyvora Technologies and its privacy-first browser tools.",
+  "homepage": "https://www.clyvora.tech/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClyvoraTech/Main.git"
+  },
+  "keywords": [
+    "clyvora",
+    "browser-tools",
+    "local-first",
+    "open-source",
+    "privacy"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",

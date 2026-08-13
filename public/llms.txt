@@ -1,0 +1,18 @@
+# Clyvora
+
+> Clyvora, also known as Clyvora Tech or Clyvora Technologies, creates free, open-source, privacy-first browser tools for working with data and media.
+
+Clyvora tools process selected files locally on the user's device. They do not require an account and do not send selected files to a Clyvora conversion or processing server.
+
+## Official projects
+
+- [Clyvora Lens](https://www.lens.clyvora.tech/): Inspect, search, filter, and convert JSON and CSV files locally in the browser.
+- [Clyvora Convert](https://convert.clyvora.tech/): Convert images, audio, and video locally in the browser.
+- [Clyvora on GitHub](https://github.com/ClyvoraTech): Official open-source repositories for Clyvora projects.
+- [About Clyvora](https://www.clyvora.tech/about/): Brand identity, mission, privacy model, and official project links.
+
+## Official names
+
+- Primary brand name: Clyvora
+- Alternate names: Clyvora Tech; Clyvora Technologies
+- Official website: https://www.clyvora.tech/

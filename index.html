@@ -4,22 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Private, open-source browser tools for data, images, and audio. Your files stay on your device." />
+    <meta name="author" content="Clyvora" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="theme-color" content="#090909" />
+    <link rel="canonical" href="https://www.clyvora.tech/" />
     <link rel="icon" type="image/png" sizes="any" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
-    <meta property="og:title" content="Clyvora" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" />
+    <meta property="og:site_name" content="Clyvora" />
+    <meta property="og:title" content="Clyvora Technologies — Private Browser Tools" />
     <meta property="og:description" content="Private, open-source browser tools. Your files stay on your device." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://clyvora.tech/" />
-    <meta property="og:image" content="https://clyvora.tech/og.png" />
+    <meta property="og:url" content="https://www.clyvora.tech/" />
+    <meta property="og:image" content="https://www.clyvora.tech/og.png" />
+    <meta property="og:image:width" content="1730" />
+    <meta property="og:image:height" content="909" />
+    <meta property="og:image:alt" content="Clyvora private browser tools for data and media" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Clyvora" />
+    <meta name="twitter:title" content="Clyvora Technologies — Private Browser Tools" />
     <meta name="twitter:description" content="Private, open-source browser tools. Your files stay on your device." />
-    <meta name="twitter:image" content="https://clyvora.tech/og.png" />
-    <title>Clyvora</title>
+    <meta name="twitter:image" content="https://www.clyvora.tech/og.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.clyvora.tech/#organization",
+            "name": "Clyvora",
+            "alternateName": ["Clyvora Tech", "Clyvora Technologies"],
+            "url": "https://www.clyvora.tech/",
+            "logo": "https://www.clyvora.tech/favicon.png",
+            "description": "Clyvora builds free, open-source, privacy-first browser tools that process files on the user's device.",
+            "sameAs": ["https://github.com/ClyvoraTech"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.clyvora.tech/#website",
+            "url": "https://www.clyvora.tech/",
+            "name": "Clyvora",
+            "alternateName": ["Clyvora Tech", "Clyvora Technologies"],
+            "publisher": { "@id": "https://www.clyvora.tech/#organization" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://www.clyvora.tech/#webpage",
+            "url": "https://www.clyvora.tech/",
+            "name": "Clyvora — Private Browser Tools",
+            "description": "Private, open-source browser tools for data, images, and audio. Your files stay on your device.",
+            "isPartOf": { "@id": "https://www.clyvora.tech/#website" },
+            "about": { "@id": "https://www.clyvora.tech/#organization" }
+          }
+        ]
+      }
+    </script>
+    <style>
+      [data-static-fallback] { box-sizing: border-box; min-height: 100vh; padding: 72px max(24px, calc((100vw - 960px) / 2)); color: #eeeae1; background: #090909; font: 16px/1.65 system-ui, sans-serif; }
+      [data-static-fallback] h1 { max-width: 760px; margin: 0 0 24px; font-size: clamp(42px, 7vw, 76px); line-height: 1.02; letter-spacing: -.05em; }
+      [data-static-fallback] h2 { margin-top: 52px; font-size: 28px; }
+      [data-static-fallback] p { max-width: 720px; color: #aaa8a1; }
+      [data-static-fallback] ul { display: grid; gap: 16px; padding: 0; list-style: none; }
+      [data-static-fallback] li { padding: 20px; border: 1px solid #2d2d2a; border-radius: 14px; }
+      [data-static-fallback] a { color: #eeeae1; }
+    </style>
+    <title>Clyvora Technologies | Private Browser Tools</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main data-static-fallback>
+        <h1>Clyvora Technologies builds private browser tools.</h1>
+        <p>Clyvora—also known as Clyvora Tech or Clyvora Technologies—creates free, open-source tools that process data and media on your device instead of uploading selected files to a processing server.</p>
+        <h2>Use a Clyvora tool</h2>
+        <ul>
+          <li><a href="https://www.lens.clyvora.tech/"><strong>Clyvora Lens</strong></a> — inspect, search, filter, and convert JSON and CSV files locally in your browser.</li>
+          <li><a href="https://convert.clyvora.tech/"><strong>Clyvora Convert</strong></a> — convert images, audio, and video locally in your browser.</li>
+        </ul>
+        <p><a href="/about/">About Clyvora</a> · <a href="https://github.com/ClyvoraTech">Official source code on GitHub</a></p>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
