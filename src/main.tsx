@@ -1,31 +1,65 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
-import Lenis from 'lenis'
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  Check,
+  Code2,
+  FileJson2,
+  Image,
+  LockKeyhole,
+} from 'lucide-react'
 import './styles.css'
 import './project-home.css'
 
-// Add future projects here when they are ready to share.
-const projects = [
+type Project = {
+  name: string
+  label: string
+  status: string
+  copy: string
+  image: string
+  alt: string
+  href: string
+  repo: string
+  features: string[]
+  formats: string
+  accent: 'lens' | 'convert'
+  icon: ReactNode
+}
+
+const projects: Project[] = [
   {
     name: 'Clyvora Lens',
-    copy: 'A local-first workspace for inspecting, searching, and converting JSON, CSV, and text files without uploading them.',
+    label: 'Data workbench',
+    status: 'Beta',
+    copy: 'Inspect, search, filter, and convert structured data without sending it anywhere.',
     image: '/lens-preview.png',
-    alt: 'Clyvora Lens interface showing a JSON tree transformed into a table',
+    alt: 'Clyvora Lens turning a nested JSON document into a readable table',
     href: 'https://lens.clyvora.tech',
+    repo: 'https://github.com/ClyvoraTech/Lens',
+    features: ['Search JSON keys and values', 'Sort and filter CSV data', 'Convert JSON and CSV locally'],
+    formats: 'JSON · CSV · TXT',
+    accent: 'lens',
+    icon: <FileJson2 aria-hidden="true" />,
   },
   {
     name: 'Clyvora Convert',
-    copy: 'A fast, local-first converter for PNG, JPG, WebP, MP3, and WAV files—without uploads or accounts.',
+    label: 'Media converter',
+    status: 'Available',
+    copy: 'Convert images and audio on your device, with batch tools and no upload queue.',
     image: '/convert-preview.png',
-    alt: 'Clyvora Convert interface showing image and audio formats passing through a local conversion engine',
+    alt: 'Clyvora Convert processing image and audio formats locally',
     href: 'https://convert.clyvora.tech',
+    repo: 'https://github.com/ClyvoraTech/Convert',
+    features: ['Batch conversion and ZIP export', 'Image resize and quality controls', 'Offline use after first load'],
+    formats: 'PNG · JPG · WEBP · MP3 · WAV',
+    accent: 'convert',
+    icon: <Image aria-hidden="true" />,
   },
 ]
 
-function Button({ children, secondary = false, href }: { children: ReactNode; secondary?: boolean; href: string }) {
-  const external = href.startsWith('http')
-  return <a className={`button ${secondary ? 'button-secondary' : ''}`} href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{children}</a>
+function ExternalLink({ children, href, className = '' }: { children: ReactNode; href: string; className?: string }) {
+  return <a className={className} href={href} target="_blank" rel="noreferrer">{children}</a>
 }
 
 function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
@@ -33,78 +67,62 @@ function Reveal({ children, className = '' }: { children: ReactNode; className?:
 }
 
 function Navbar() {
-  const [obscured, setObscured] = useState(false)
-
-  useEffect(() => {
-    let observer: IntersectionObserver | null = null
-
-    const observeCollisions = () => {
-      observer?.disconnect()
-      const mark = document.querySelector<HTMLElement>('.nav-brand')
-      if (!mark) return
-
-      const rect = mark.getBoundingClientRect()
-      const left = Math.max(0, rect.left - 8)
-      const right = Math.min(window.innerWidth, rect.right + 8)
-      const top = Math.max(0, rect.top - 8)
-      const bottom = Math.min(window.innerHeight, rect.bottom + 8)
-      const overlapping = new Set<Element>()
-
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) overlapping.add(entry.target)
-          else overlapping.delete(entry.target)
-        })
-        setObscured(overlapping.size > 0)
-      }, {
-        rootMargin: `${-top}px ${-(window.innerWidth - right)}px ${-(window.innerHeight - bottom)}px ${-left}px`,
-        threshold: 0,
-      })
-
-      document
-        .querySelectorAll<HTMLElement>('h1, h2, h3, p, .button, .project-card, footer a')
-        .forEach((target) => {
-          if (!target.closest('.nav-wrap')) observer?.observe(target)
-        })
-    }
-
-    observeCollisions()
-    window.addEventListener('resize', observeCollisions)
-    return () => {
-      observer?.disconnect()
-      window.removeEventListener('resize', observeCollisions)
-    }
-  }, [])
-
-  return <header className={`nav-wrap ${obscured ? 'is-obscured' : ''}`}>
+  return <header className="nav-wrap">
     <nav className="nav" aria-label="Main navigation">
       <a href="#top" className="nav-brand" aria-label="Clyvora home">
-        <img src="/favicon.png" alt="" width="32" height="32" decoding="async" />
+        <img src="/favicon.png" alt="" width="30" height="30" decoding="async" />
       </a>
+      <div className="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#principles">Principles</a>
+        <ExternalLink href="https://github.com/ClyvoraTech">GitHub <ArrowUpRight size={13} /></ExternalLink>
+      </div>
     </nav>
   </header>
 }
 
-function SectionIntro({ title }: { title: ReactNode }) {
-  return <Reveal><h2>{title}</h2></Reveal>
+function ProjectCard({ project }: { project: Project }) {
+  return <Reveal className={`project-reveal project-${project.accent}`}>
+    <article className="project-card">
+      <ExternalLink className="project-art-link" href={project.href}>
+        <div className="project-art">
+          <img src={project.image} alt={project.alt} />
+          <span className="project-format">{project.formats}</span>
+        </div>
+      </ExternalLink>
+
+      <div className="project-content">
+        <div className="project-heading">
+          <div className="project-icon">{project.icon}</div>
+          <div>
+            <p className="project-label">{project.label}</p>
+            <h3>{project.name}</h3>
+          </div>
+          <span className="status"><i />{project.status}</span>
+        </div>
+
+        <p className="project-copy">{project.copy}</p>
+
+        <ul className="feature-list">
+          {project.features.map(feature => <li key={feature}><Check size={14} />{feature}</li>)}
+        </ul>
+
+        <div className="project-actions">
+          <ExternalLink className="button button-primary" href={project.href}>Try it now <ArrowUpRight size={15} /></ExternalLink>
+          <ExternalLink className="text-link" href={project.repo}><Code2 size={15} />View source <ArrowUpRight size={13} /></ExternalLink>
+        </div>
+      </div>
+    </article>
+  </Reveal>
 }
 
 function App() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const lenis = new Lenis({ duration: 1.05, smoothWheel: true, touchMultiplier: 1.35 })
-    let frame = 0
-    const animate = (time: number) => { lenis.raf(time); frame = requestAnimationFrame(animate) }
-    frame = requestAnimationFrame(animate)
-    return () => { cancelAnimationFrame(frame); lenis.destroy() }
-  }, [])
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible')),
-      { threshold: 0.15 },
+      { threshold: 0.12 },
     )
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element))
     return () => observer.disconnect()
   }, [])
 
@@ -112,45 +130,91 @@ function App() {
     <Navbar />
 
     <section className="hero" aria-labelledby="hero-title">
-      <div className="orb orb-a" aria-hidden="true"/><div className="orb orb-b" aria-hidden="true"><span/></div><div className="hero-grid" aria-hidden="true"/>
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="orb orb-a" aria-hidden="true" />
+      <div className="orb orb-b" aria-hidden="true"><span /></div>
+
       <div className="hero-content">
-        <h1 id="hero-title">Things I build,<br/><i>in one place.</i></h1>
-        <p className="hero-copy">Clyvora is my personal home for software, experiments, and ideas I want to put into the world.</p>
+        <p className="eyebrow"><span />Private by design · Open source</p>
+        <h1 id="hero-title">Useful file tools.<br /><i>Your files stay yours.</i></h1>
+        <p className="hero-copy">Clyvora builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads, accounts, or analytics.</p>
         <div className="hero-actions">
-          <Button href="#projects">See the projects <ArrowDownRight size={17}/></Button>
-          <Button href="https://github.com/ClyvoraTech" secondary>View GitHub <ArrowUpRight size={17}/></Button>
+          <a className="button button-primary" href="#projects">Explore the tools <ArrowDownRight size={16} /></a>
+          <ExternalLink className="button button-secondary" href="https://github.com/ClyvoraTech">Browse the code <ArrowUpRight size={16} /></ExternalLink>
         </div>
+      </div>
+
+      <div className="trust-strip" aria-label="Clyvora product principles">
+        <span><LockKeyhole size={15} />Local processing</span>
+        <span><Check size={15} />No account</span>
+        <span><Code2 size={15} />Open source</span>
       </div>
     </section>
 
-    <section id="projects" className="section projects">
-      <SectionIntro title={<>Made, then<br/><i>shared.</i></>}/>
-      <div className="project-layout">
-        <div className="project-grid">
-          {projects.map(project => <Reveal className="project-reveal" key={project.name}>
-            <a className="project-card" href={project.href} aria-label={`Open ${project.name}`}>
-              <div className={`project-art ${project.image ? 'has-image' : ''}`}>
-                {project.image
-                  ? <img src={project.image} alt={project.alt}/>
-                  : <div className="art-form"/>}
-              </div>
-              <div className="project-info"><div><h3>{project.name}</h3><p>{project.copy}</p></div><span className="project-link">Open <ArrowUpRight size={15}/></span></div>
-            </a>
-          </Reveal>)}
-        </div>
+    <section id="projects" className="section projects" aria-labelledby="projects-title">
+      <Reveal className="section-heading">
+        <p className="eyebrow"><span />Available now</p>
+        <h2 id="projects-title">Tools you can<br /><i>use today.</i></h2>
+        <p>Small, focused utilities with a clear privacy boundary: selected files stay in your browser.</p>
+      </Reveal>
+
+      <div className="project-grid">
+        {projects.map(project => <ProjectCard key={project.name} project={project} />)}
       </div>
     </section>
 
-    <section id="about" className="section about">
-      <div className="section-orbit" aria-hidden="true"><span/></div>
-      <SectionIntro title={<>A name for my<br/><i>side projects.</i></>}/>
-      <Reveal className="about-body">
-        <p>Clyvora is the name I use for software projects and experiments I build in my spare time. This is where I collect the ones worth sharing.</p>
-        <div className="glass-statement"><span>“</span><strong>Build interesting things.<br/>Share the good ones.</strong></div>
+    <section id="principles" className="section principles" aria-labelledby="principles-title">
+      <div className="principle-orbit" aria-hidden="true"><span /></div>
+      <Reveal className="principles-intro">
+        <p className="eyebrow"><span />The boundary</p>
+        <h2 id="principles-title">Privacy is<br /><i>the architecture.</i></h2>
+        <p>No vague promise and no hidden upload step. Clyvora tools are designed to do their work on the device already in front of you.</p>
+      </Reveal>
+
+      <div className="principle-grid">
+        <Reveal className="principle-card">
+          <span>01</span>
+          <LockKeyhole size={24} />
+          <h3>Local by default</h3>
+          <p>Your files are parsed and transformed inside the browser, not on a conversion server.</p>
+        </Reveal>
+        <Reveal className="principle-card">
+          <span>02</span>
+          <Check size={24} />
+          <h3>No account or analytics</h3>
+          <p>Open a tool and use it. There is no sign-up flow, cloud library, advertising, or behavioural tracking.</p>
+        </Reveal>
+        <Reveal className="principle-card">
+          <span>03</span>
+          <Code2 size={24} />
+          <h3>Open to inspection</h3>
+          <p>The source is public. Inspect how the tools work, report a problem, or contribute an improvement.</p>
+        </Reveal>
+      </div>
+    </section>
+
+    <section className="closing" aria-labelledby="closing-title">
+      <div className="closing-grid" aria-hidden="true" />
+      <Reveal>
+        <p className="eyebrow"><span />No setup required</p>
+        <h2 id="closing-title">Pick a tool.<br /><i>Keep your files.</i></h2>
+        <div className="closing-actions">
+          <ExternalLink className="button button-primary" href="https://lens.clyvora.tech">Open Lens <ArrowUpRight size={16} /></ExternalLink>
+          <ExternalLink className="button button-secondary" href="https://convert.clyvora.tech">Open Convert <ArrowUpRight size={16} /></ExternalLink>
+        </div>
       </Reveal>
     </section>
 
-    <footer><a href="#top" className="logo">Clyvora<span>.</span></a><div><a href="#projects">Projects</a><a href="#about">About</a><a href="https://github.com/ClyvoraTech" target="_blank" rel="noreferrer">GitHub</a></div><p>© {new Date().getFullYear()} Clyvora · Built independently</p></footer>
+    <footer>
+      <a href="#top" className="footer-brand">Clyvora<span>.</span></a>
+      <p>Independent, anonymous, and built in the open.</p>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#principles">Principles</a>
+        <ExternalLink href="https://github.com/ClyvoraTech">GitHub</ExternalLink>
+      </div>
+      <small>© {new Date().getFullYear()} Clyvora</small>
+    </footer>
   </main>
 }
 
