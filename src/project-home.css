@@ -28,6 +28,12 @@ body {
 .nav-wrap {
   top: 20px;
   width: min(1120px, calc(100% - 40px));
+  transition: opacity .24s ease;
+}
+
+.nav-wrap.is-obscured {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav {

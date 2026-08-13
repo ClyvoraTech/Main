@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
 import Lenis from 'lenis'
@@ -33,7 +33,47 @@ function Reveal({ children, className = '' }: { children: ReactNode; className?:
 }
 
 function Navbar() {
-  return <header className="nav-wrap">
+  const [obscured, setObscured] = useState(false)
+
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const mark = document.querySelector<HTMLElement>('.nav-brand')
+        if (!mark) return
+
+        const markRect = mark.getBoundingClientRect()
+        const collisionBox = {
+          left: markRect.left - 8,
+          right: markRect.right + 8,
+          top: markRect.top - 8,
+          bottom: markRect.bottom + 8,
+        }
+        const targets = document.querySelectorAll<HTMLElement>('h1, h2, h3, p, .button, .project-art, footer a')
+        const overlapsContent = Array.from(targets).some((target) => {
+          if (target.closest('.nav-wrap') || target.offsetParent === null) return false
+          const rect = target.getBoundingClientRect()
+          return rect.left < collisionBox.right
+            && rect.right > collisionBox.left
+            && rect.top < collisionBox.bottom
+            && rect.bottom > collisionBox.top
+        })
+        setObscured(overlapsContent)
+      })
+    }
+
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  return <header className={`nav-wrap ${obscured ? 'is-obscured' : ''}`}>
     <nav className="nav" aria-label="Main navigation">
       <a href="#top" className="nav-brand" aria-label="Clyvora home">
         <img src="/favicon.png" alt="" width="32" height="32" decoding="async" />
