@@ -36,40 +36,43 @@ function Navbar() {
   const [obscured, setObscured] = useState(false)
 
   useEffect(() => {
-    let frame = 0
-    const update = () => {
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => {
-        const mark = document.querySelector<HTMLElement>('.nav-brand')
-        if (!mark) return
+    let observer: IntersectionObserver | null = null
 
-        const markRect = mark.getBoundingClientRect()
-        const collisionBox = {
-          left: markRect.left - 8,
-          right: markRect.right + 8,
-          top: markRect.top - 8,
-          bottom: markRect.bottom + 8,
-        }
-        const targets = document.querySelectorAll<HTMLElement>('h1, h2, h3, p, .button, .project-art, footer a')
-        const overlapsContent = Array.from(targets).some((target) => {
-          if (target.closest('.nav-wrap') || target.offsetParent === null) return false
-          const rect = target.getBoundingClientRect()
-          return rect.left < collisionBox.right
-            && rect.right > collisionBox.left
-            && rect.top < collisionBox.bottom
-            && rect.bottom > collisionBox.top
+    const observeCollisions = () => {
+      observer?.disconnect()
+      const mark = document.querySelector<HTMLElement>('.nav-brand')
+      if (!mark) return
+
+      const rect = mark.getBoundingClientRect()
+      const left = Math.max(0, rect.left - 8)
+      const right = Math.min(window.innerWidth, rect.right + 8)
+      const top = Math.max(0, rect.top - 8)
+      const bottom = Math.min(window.innerHeight, rect.bottom + 8)
+      const overlapping = new Set<Element>()
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) overlapping.add(entry.target)
+          else overlapping.delete(entry.target)
         })
-        setObscured(overlapsContent)
+        setObscured(overlapping.size > 0)
+      }, {
+        rootMargin: `${-top}px ${-(window.innerWidth - right)}px ${-(window.innerHeight - bottom)}px ${-left}px`,
+        threshold: 0,
       })
+
+      document
+        .querySelectorAll<HTMLElement>('h1, h2, h3, p, .button, .project-card, footer a')
+        .forEach((target) => {
+          if (!target.closest('.nav-wrap')) observer?.observe(target)
+        })
     }
 
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
+    observeCollisions()
+    window.addEventListener('resize', observeCollisions)
     return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
+      observer?.disconnect()
+      window.removeEventListener('resize', observeCollisions)
     }
   }, [])
 
