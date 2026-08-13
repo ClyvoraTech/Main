@@ -1,6 +1,6 @@
 # Clyvora Technologies
 
-[Clyvora](https://www.clyvora.tech/)—also known as Clyvora Tech or Clyvora Technologies—builds free, open-source, privacy-first browser tools. Selected files are processed on the user's device instead of being uploaded to a Clyvora processing server.
+[Clyvora](https://www.clyvora.tech/)—also known as Clyvora Tech or Clyvora Technologies—builds free, privacy-first browser tools. Selected files are processed on the user's device instead of being uploaded to a Clyvora processing server.
 
 ## Official projects
 
@@ -17,3 +17,7 @@ pnpm dev
 ```
 
 Run `pnpm build` to type-check and create a production build.
+
+## License
+
+This website's original source code and content are proprietary. Copyright (c) 2026 Clyvora contributors. All rights reserved. See [LICENSE](LICENSE).
