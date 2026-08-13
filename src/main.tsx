@@ -135,7 +135,6 @@ function App() {
       <div className="orb orb-b" aria-hidden="true"><span /></div>
 
       <div className="hero-content">
-        <p className="eyebrow"><span />Private by design · Open source</p>
         <h1 id="hero-title">Useful file tools.<br /><i>Your files stay yours.</i></h1>
         <p className="hero-copy">Clyvora builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads, accounts, or analytics.</p>
         <div className="hero-actions">
@@ -143,17 +142,10 @@ function App() {
           <ExternalLink className="button button-secondary" href="https://github.com/ClyvoraTech">Browse the code <ArrowUpRight size={16} /></ExternalLink>
         </div>
       </div>
-
-      <div className="trust-strip" aria-label="Clyvora product principles">
-        <span><LockKeyhole size={15} />Local processing</span>
-        <span><Check size={15} />No account</span>
-        <span><Code2 size={15} />Open source</span>
-      </div>
     </section>
 
     <section id="projects" className="section projects" aria-labelledby="projects-title">
       <Reveal className="section-heading">
-        <p className="eyebrow"><span />Available now</p>
         <h2 id="projects-title">Tools you can<br /><i>use today.</i></h2>
         <p>Small, focused utilities with a clear privacy boundary: selected files stay in your browser.</p>
       </Reveal>
@@ -166,7 +158,6 @@ function App() {
     <section id="principles" className="section principles" aria-labelledby="principles-title">
       <div className="principle-orbit" aria-hidden="true"><span /></div>
       <Reveal className="principles-intro">
-        <p className="eyebrow"><span />The boundary</p>
         <h2 id="principles-title">Privacy is<br /><i>the architecture.</i></h2>
         <p>No vague promise and no hidden upload step. Clyvora tools are designed to do their work on the device already in front of you.</p>
       </Reveal>
@@ -196,7 +187,6 @@ function App() {
     <section className="closing" aria-labelledby="closing-title">
       <div className="closing-grid" aria-hidden="true" />
       <Reveal>
-        <p className="eyebrow"><span />No setup required</p>
         <h2 id="closing-title">Pick a tool.<br /><i>Keep your files.</i></h2>
         <div className="closing-actions">
           <ExternalLink className="button button-primary" href="https://lens.clyvora.tech">Open Lens <ArrowUpRight size={16} /></ExternalLink>
