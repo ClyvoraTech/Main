@@ -49,7 +49,7 @@ const projects: Project[] = [
     copy: 'Convert images and audio on your device, with batch tools and no upload queue.',
     image: '/convert-preview.png',
     alt: 'Clyvora Convert processing image and audio formats locally',
-    href: 'https://convert.clyvora.tech',
+    href: 'https://www.convert.clyvora.tech',
     repo: 'https://github.com/ClyvoraTech/Convert',
     features: ['Batch conversion and ZIP export', 'Image resize and quality controls', 'Offline use after first load'],
     formats: 'PNG · JPG · WEBP · MP3 · WAV',
@@ -198,7 +198,7 @@ function App() {
         <h2 id="closing-title">Pick a tool.<br /><i>Keep your files.</i></h2>
         <div className="closing-actions">
           <ExternalLink className="button button-primary" href="https://www.lens.clyvora.tech">Open Lens <ArrowUpRight size={16} /></ExternalLink>
-          <ExternalLink className="button button-secondary" href="https://convert.clyvora.tech">Open Convert <ArrowUpRight size={16} /></ExternalLink>
+          <ExternalLink className="button button-secondary" href="https://www.convert.clyvora.tech">Open Convert <ArrowUpRight size={16} /></ExternalLink>
         </div>
       </Reveal>
     </section>

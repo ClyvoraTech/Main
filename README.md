@@ -5,7 +5,7 @@
 ## Official projects
 
 - [Clyvora Lens](https://www.lens.clyvora.tech/) inspects, searches, filters, and converts JSON and CSV files locally in the browser.
-- [Clyvora Convert](https://convert.clyvora.tech/) converts images, audio, and video locally in the browser.
+- [Clyvora Convert](https://www.convert.clyvora.tech/) converts images, audio, and video locally in the browser.
 
 The source for Clyvora projects is published through the [ClyvoraTech GitHub organization](https://github.com/ClyvoraTech).
 
