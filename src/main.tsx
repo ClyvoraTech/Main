@@ -16,6 +16,13 @@ const projects = [
     name: 'Clyvora Lens',
     copy: 'A local-first workspace for inspecting, searching, and converting JSON, CSV, and text files without uploading them.',
     image: '/lens-preview.png',
+    alt: 'Clyvora Lens interface showing a JSON tree transformed into a table',
+  },
+  {
+    name: 'Clyvora Convert',
+    copy: 'A fast, local-first converter for PNG, JPG, WebP, MP3, and WAV files—without uploads or accounts.',
+    image: '/convert-preview.png',
+    alt: 'Clyvora Convert interface showing image and audio formats passing through a local conversion engine',
   },
 ]
 
@@ -99,14 +106,13 @@ function App() {
             <article className="project-card">
               <div className={`project-art ${project.image ? 'has-image' : ''}`}>
                 {project.image
-                  ? <img src={project.image} alt="Clyvora Lens interface showing a JSON tree transformed into a table"/>
+                  ? <img src={project.image} alt={project.alt}/>
                   : <div className="art-form"/>}
               </div>
               <div className="project-info"><div><h3>{project.name}</h3><p>{project.copy}</p></div></div>
             </article>
           </Reveal>)}
         </div>
-        <Reveal className="project-note"><h3>A growing collection.</h3><p>More projects will appear here when they’re ready.</p></Reveal>
       </div>
     </section>
 

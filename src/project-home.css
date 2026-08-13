@@ -149,17 +149,18 @@ main {
 
 .project-layout {
   margin-top: 95px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(250px, .65fr);
-  gap: 48px;
-  align-items: end;
 }
 
 .project-layout .project-grid {
   margin-top: 0;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
+}
+
+.project-layout .project-reveal,
+.project-layout .project-card {
+  height: 100%;
 }
 
 .project-layout .project-card {
@@ -167,7 +168,8 @@ main {
 }
 
 .project-layout .project-art {
-  height: 390px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   background-color: #090909;
   background-image:
     linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
@@ -228,20 +230,6 @@ main {
   max-width: 390px;
 }
 
-.project-note h3 {
-  margin: 0;
-  font-size: 29px;
-  font-weight: 500;
-  letter-spacing: -.045em;
-}
-
-.project-note > p {
-  margin: 14px 0 0;
-  color: #92928d;
-  font-size: 15px;
-  line-height: 1.55;
-}
-
 footer {
   background: #090909;
   color: #f5f5f2;
@@ -284,23 +272,15 @@ footer > div a:hover {
 
   .project-layout {
     margin-top: 58px;
-    display: block;
   }
 
   .project-layout .project-grid {
     margin-top: 0;
+    grid-template-columns: 1fr;
   }
 
   .project-layout .project-art {
-    height: 270px;
-  }
-
-  .project-note {
-    margin-top: 42px;
-  }
-
-  .project-note h3 {
-    font-size: 26px;
+    height: auto;
   }
 
   footer p {
