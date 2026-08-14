@@ -9,6 +9,8 @@
 
 The source for Clyvora projects is published through the [ClyvoraTech GitHub organization](https://github.com/ClyvoraTech).
 
+The deployed sites use Vercel Web Analytics for anonymous, cookie-free page-view statistics. No custom analytics events are configured, and selected filenames and file contents are not sent to analytics.
+
 ## Development
 
 ```bash

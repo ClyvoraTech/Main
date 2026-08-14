@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { Analytics } from '@vercel/analytics/react'
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -144,7 +145,7 @@ function App() {
 
       <div className="hero-content">
         <h1 id="hero-title">Useful file tools.<br /><i>Your files stay yours.</i></h1>
-        <p className="hero-copy">Clyvora Technologies builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads, accounts, or analytics.</p>
+        <p className="hero-copy">Clyvora Technologies builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads or accounts.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">Explore the tools <ArrowDownRight size={16} /></a>
           <ExternalLink className="button button-secondary" href="https://github.com/ClyvoraTech">Browse the code <ArrowUpRight size={16} /></ExternalLink>
@@ -180,8 +181,8 @@ function App() {
         <Reveal className="principle-card">
           <span>02</span>
           <Check size={24} />
-          <h3>No account or analytics</h3>
-          <p>Open a tool and use it. There is no sign-up flow, cloud library, advertising, or behavioural tracking.</p>
+          <h3>No account or advertising</h3>
+          <p>There is no sign-up flow, cloud library, advertising, or behavioural profile. Cookie-free page analytics measure anonymous site traffic only.</p>
         </Reveal>
         <Reveal className="principle-card">
           <span>03</span>
@@ -217,4 +218,9 @@ function App() {
   </main>
 }
 
-createRoot(document.getElementById('root')!).render(<App />)
+createRoot(document.getElementById('root')!).render(
+  <>
+    <App />
+    <Analytics />
+  </>,
+)

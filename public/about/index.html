@@ -64,7 +64,8 @@
 
       <section aria-labelledby="mission-title">
         <h2 id="mission-title">What Clyvora builds</h2>
-        <p>Clyvora tools are designed to work without accounts, cloud libraries, advertising, or behavioural analytics. Selected files are parsed and transformed locally in the browser, so they are not uploaded to a Clyvora processing or conversion server.</p>
+        <p>Clyvora tools are designed to work without accounts, cloud libraries, advertising, or behavioural profiles. Selected files are parsed and transformed locally in the browser, so they are not uploaded to a Clyvora processing or conversion server.</p>
+        <p>Clyvora uses Vercel Web Analytics for anonymous, cookie-free traffic statistics. Standard page views may include the visited path, referrer, coarse location, browser, operating system, and device type. Clyvora does not configure custom analytics events, and filenames and file contents are never included.</p>
         <p>The projects are published as source-available software so people can inspect how the tools work, report problems, and contribute improvements under their respective license terms.</p>
       </section>
 
@@ -95,5 +96,9 @@
       </section>
     </main>
     <footer><span>© 2026 Clyvora</span><span>Independent and built in the open.</span></footer>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments) }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>
