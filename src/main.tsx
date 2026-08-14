@@ -37,7 +37,7 @@ const projects: Project[] = [
     image: '/lens-preview.png',
     alt: 'Clyvora Lens turning a nested JSON document into a readable table',
     href: 'https://www.lens.clyvora.tech',
-    repo: 'https://github.com/ClyvoraTech/Lens',
+    repo: 'https://github.com/Clyvora/Lens',
     features: ['Search JSON keys and values', 'Sort and filter CSV data', 'Convert JSON and CSV locally'],
     formats: 'JSON · CSV · TXT',
     accent: 'lens',
@@ -51,7 +51,7 @@ const projects: Project[] = [
     image: '/convert-preview.png',
     alt: 'Clyvora Convert processing image and audio formats locally',
     href: 'https://www.convert.clyvora.tech',
-    repo: 'https://github.com/ClyvoraTech/Convert',
+    repo: 'https://github.com/Clyvora/Convert',
     features: ['Batch conversion and ZIP export', 'Image resize and quality controls', 'Offline use after first load'],
     formats: 'PNG · JPG · WEBP · MP3 · WAV',
     accent: 'convert',
@@ -77,7 +77,7 @@ function Navbar() {
         <a href="#projects">Projects</a>
         <a href="#principles">Principles</a>
         <a href="/about/">About</a>
-        <ExternalLink href="https://github.com/ClyvoraTech">GitHub <ArrowUpRight size={13} /></ExternalLink>
+        <ExternalLink href="https://github.com/Clyvora">GitHub <ArrowUpRight size={13} /></ExternalLink>
       </div>
     </nav>
   </header>
@@ -148,7 +148,7 @@ function App() {
         <p className="hero-copy">Clyvora Technologies builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads or accounts.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">Explore the tools <ArrowDownRight size={16} /></a>
-          <ExternalLink className="button button-secondary" href="https://github.com/ClyvoraTech">Browse the code <ArrowUpRight size={16} /></ExternalLink>
+          <ExternalLink className="button button-secondary" href="https://github.com/Clyvora">Browse the code <ArrowUpRight size={16} /></ExternalLink>
         </div>
       </div>
     </section>
@@ -211,7 +211,7 @@ function App() {
         <a href="#projects">Projects</a>
         <a href="#principles">Principles</a>
         <a href="/about/">About</a>
-        <ExternalLink href="https://github.com/ClyvoraTech">GitHub</ExternalLink>
+        <ExternalLink href="https://github.com/Clyvora">GitHub</ExternalLink>
       </div>
       <small>© {new Date().getFullYear()} Clyvora</small>
     </footer>

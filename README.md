@@ -7,7 +7,7 @@
 - [Clyvora Lens](https://www.lens.clyvora.tech/) inspects, searches, filters, and converts JSON and CSV files locally in the browser.
 - [Clyvora Convert](https://www.convert.clyvora.tech/) converts images, audio, and video locally in the browser.
 
-The source for Clyvora projects is published through the [ClyvoraTech GitHub organization](https://github.com/ClyvoraTech).
+The source for Clyvora projects is published through the [Clyvora GitHub organization](https://github.com/Clyvora).
 
 The deployed sites use Vercel Web Analytics for anonymous, cookie-free page-view statistics. No custom analytics events are configured, and selected filenames and file contents are not sent to analytics.
 
