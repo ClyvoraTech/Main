@@ -46,7 +46,7 @@ const projects: Project[] = [
   {
     name: 'Clyvora Convert',
     label: 'Media converter',
-    status: 'Available',
+    status: 'Beta',
     copy: 'Convert images and audio on your device, with batch tools and no upload queue.',
     image: '/convert-preview.png',
     alt: 'Clyvora Convert processing image and audio formats locally',
@@ -145,7 +145,7 @@ function App() {
 
       <div className="hero-content">
         <h1 id="hero-title">Useful file tools.<br /><i>Your files stay yours.</i></h1>
-        <p className="hero-copy">Clyvora Technologies builds focused browser tools for data, images, and audio. Everything is processed on your device—without uploads or accounts.</p>
+        <p className="hero-copy">Clyvora builds focused browser tools for data and media. Local files are processed on your device; link imports contact the source host only after you request them.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">Explore the tools <ArrowDownRight size={16} /></a>
           <ExternalLink className="button button-secondary" href="https://github.com/Clyvora">Browse the code <ArrowUpRight size={16} /></ExternalLink>
@@ -206,7 +206,7 @@ function App() {
 
     <footer>
       <a href="#top" className="footer-brand">Clyvora<span>.</span></a>
-      <p>Independent, anonymous, and built in the open.</p>
+      <p>Independent and maintained in the open by <a href="https://github.com/scaryzombies">Levi (scaryzombies)</a>.</p>
       <div>
         <a href="#projects">Projects</a>
         <a href="#principles">Principles</a>

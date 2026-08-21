@@ -11,34 +11,34 @@ importers:
       '@vercel/analytics':
         specifier: 2.0.1
         version: 2.0.1(react@19.2.8)
-      '@vitejs/plugin-react':
-        specifier: latest
-        version: 6.0.5(vite@8.2.1(@types/node@26.2.0))
       lucide-react:
-        specifier: latest
+        specifier: 1.31.0
         version: 1.31.0(react@19.2.8)
       react:
-        specifier: latest
+        specifier: 19.2.8
         version: 19.2.8
       react-dom:
-        specifier: latest
+        specifier: 19.2.8
         version: 19.2.8(react@19.2.8)
-      typescript:
-        specifier: latest
-        version: 7.0.2
-      vite:
-        specifier: latest
-        version: 8.2.1(@types/node@26.2.0)
     devDependencies:
       '@types/node':
-        specifier: latest
+        specifier: 26.2.0
         version: 26.2.0
       '@types/react':
-        specifier: latest
+        specifier: 19.2.18
         version: 19.2.18
       '@types/react-dom':
-        specifier: latest
+        specifier: 19.2.4
         version: 19.2.4(@types/react@19.2.18)
+      '@vitejs/plugin-react':
+        specifier: 6.0.5
+        version: 6.0.5(vite@8.2.1(@types/node@26.2.0))
+      typescript:
+        specifier: 7.0.2
+        version: 7.0.2
+      vite:
+        specifier: 8.2.1
+        version: 8.2.1(@types/node@26.2.0)
 
 packages:
 
